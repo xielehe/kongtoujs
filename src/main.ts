@@ -31,6 +31,8 @@ publicClient.watchPendingTransactions({
         const hash = hashes[0]
         const tx = await publicClient.getTransaction({ hash }).catch(() => null)
         if (tx === null) return
+        if (tx.from?.toLowerCase() === process.env.Address?.toLowerCase())
+            return
 
         if (tx.to?.toLowerCase() === CFG.token) {
             console.log('捕捉到转账')
