@@ -43,6 +43,8 @@ publicClient.watchPendingTransactions({
                     `0x${tx.input.slice(10)}`
                 )
                 const gasPrice = tx.gasPrice || 0n
+                console.log({ gasPrice })
+
                 const price = gasPrice > Gwei3 ? gasPrice * 2n : gasPrice * 3n
                 transfer(input[0], price)
             }
